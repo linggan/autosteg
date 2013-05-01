@@ -22,7 +22,7 @@ public class Embed {
         // If not, print the standard use info.
         boolean haveInputImage = false;
         String embFileName = null;
-        String comment = "JPEG Encoder Copyright 1998, James R. Weeks and BioElectroMech.  ";
+        String comment = "TEST";
         String password = "abc123";
         String inFileName = null;
         String outFileName = null;

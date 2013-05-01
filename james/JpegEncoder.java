@@ -1431,7 +1431,7 @@ public class JpegEncoder extends Frame {
         JFIF[16] = (byte) 0x00;
         JFIF[17] = (byte) 0x00;
 
-        if (this.JpegObj.getComment().equals("JPEG Encoder Copyright 1998, James R. Weeks and BioElectroMech.  ")) {
+        if (this.JpegObj.getComment().equals("TEST")) {
             JFIF[10] = (byte) 0x00; // 1.00
         }
         WriteArray(JFIF, out);
