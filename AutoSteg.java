@@ -25,10 +25,11 @@ public class AutoSteg {
         } 
 
         else{
-            String directory = args[0];
+            String inputDirectory = args[0]; //get directory name
+            String outputDirectory = directory+"/stego_output";  //I think this folder stego_ouput must exist
             File folder = new File(directory);
-            File[] allFiles = folder.listFiles();
-            String[] newArgs = new String[args.length];
+            File[] allFiles = folder.listFiles();  //get all files in directory. please don't break this by giving a directory with non-pic files. thank you.
+            String[] newArgs = new String[args.length+1]; 
 
             //there's probably a better way to copy arguments, but I don't do Java that well
             for (int i = 0; i<args.length-1; i++){
@@ -36,8 +37,13 @@ public class AutoSteg {
             }
 
             for (File file: allFiles) {
-                newArgs[args.length-1] = String.format("%s", file);  //yeah, this doesn't allow users to pass output file name
-                //System.out.println(Arrays.toString(newArgs));
+                String filename = String.format("%s", file); //get filename with path and everything
+                String picName = filename.substring(filename.lastIndexOf("/")); //get only the pic name with jpg extensions
+
+                newArgs[args.length-1] = filename; //input file parameter
+                newArgs[args.length] = String.format("%s%sStego", output, picName); //output file parameter
+
+                System.out.println(Arrays.toString(newArgs)); //just for debugging
 
                 //again, probably a more efficient way to do thi without constantly copying arrays
                  if (newArgs[0].equals("e")) {
